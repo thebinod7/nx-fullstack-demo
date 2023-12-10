@@ -9,3 +9,12 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Product {
+  id        Int       @unique @default(autoincrement())
+  name      String    @db.VarChar() @unique
+  price     Int   
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt()
+  @@map("products")
+}
